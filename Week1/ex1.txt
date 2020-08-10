@@ -1,0 +1,46 @@
+Date
+
+	1.. d1.compare(Date &d2)
+if d1 < d2 => -1, d1 > d2 => 1, d1 == d2 => 0
+
+2..\
+diff( Date &d2) ===> d1.diff(d2) => #of day
+
+
+vector
+
+xay dung mot lop de tinh toan voi vector
+class vector -- array of real number && number of dim
+default constructor
+copy constructor
+user-defined constructor
+
+getter && setter
+
+method: add, multiply, dot(tich vo huong) 2 vector 	
+
+upgrade to choose vector 2D, 3D
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------
+pass by value, reference, pointer
+copy constructor:deep & shallow,
+myClass a;
+myClass b = a;
+
+prototype:
+1. MyClass( const myClass& other)
+2. MyClass( MyClass& other)
+3. 
+4.
+
+ **************************

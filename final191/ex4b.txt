@@ -1,0 +1,20 @@
+class ProbDist
+{
+...
+float calculateCrossEntropy(float* T) {
+float result = 0;
+for(int row=0; row<this->nrows; row++) {
+int col = T[row];
+float prob = this->pWeight[idx(row, col)];
+result += log(prob);
+}
+return -result/this->nrows;
+}
+};
+...
+int main(int argc, char** argv) {
+...
+cout << "cross-entropy(X,T):" << endl;
+cout << x->calculateCrossEntropy(t) << endl;
+return 0;
+}

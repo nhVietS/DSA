@@ -1,0 +1,9 @@
+BT: 15% 1 final test on Lab
+TN: 10% avg.grade 6 labs
+T6 give ex -> CN finish ex
+=> 2 assigment(25%): implement 
+ - ass1: List(all type) : ArrayList, Linked List ( SingleLL,DoubleLL ) 
+ - ass2: Graph + Hash
+ 
+ duytnb@hcmut.edu.vn
+CS-5839
