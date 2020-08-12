@@ -1,0 +1,10 @@
+List
+- what 
+- why: list to store sequence of item
+- how
+internal memnory: RAM
+external memnory: 
+
+array: cpp- pass to function = pass the adress of the first element
+
+practice how to use array, vector, template
