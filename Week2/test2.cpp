@@ -56,7 +56,7 @@ public:
 	MyArrayList(int capacity){
 		this->capacity = capacity;
 		count =0;
-		data = new T[capacity];
+		data = new T(capacity);
 	}
 	~MyArrayList(){
 		if(data != NULL) delete []data;
@@ -89,30 +89,8 @@ public:
 		if(index <0 || index >= count)
 			throw "Exception: Index out of boundary"; 
 	};
-	void removeAt(int index){
-		if( index <0 || index >count)//illegal
-			throw "the input out of range";
-		count-=1;
-		if(count == index){
-			
-	};
-	void insertAt(int index, T e){
-		if( index <0 || index >count)//illegal
-			throw "the input out of range";
-		ensureCapacity(index);
-		count+=1;// increase when add
-		
-		if(count == 0){
-			data[index] = e;
-			return;
-		}
-		
-		for(int idx= count -1; idx >= index; idx--){
-			data[idx+1] = data[idx];
-		}
-		data[index] = e;// assign the item into the specific index
-		
-	};
+	void removeAt(int);
+	void insertAt(int);
 	
 	void push_back(T item){
 		if(count >= capacity){
@@ -170,60 +148,6 @@ void println(MyArrayList<Point> ma){
 		cout << "(" << ma.get(idx).getX() << ", " << ma.get(idx).getY() << ")" << endl;
 	}
 }
-template<class T> class SLinkedlist;
-
-template<class T>
-class Node{
-private:
-	T data;
-	Node<T> *next;
-	friend class SLinkedlist;
-public:
-	Node(){
-		this->next = NULL; // NULL == 0
-	}
-	Node(Node<T> *next){
-		this->next = next;
-	}
-	Node(T data, Node<T> *next){
-		this->data = data;
-		this->next = next;
-	}
-};
-template<class T>
-class SLinkedlist{
-private:
-	Node<T> *head;
-	Node<T> *tail;
-	int count;
-public:
-	SLinkedlist(){
-		head = new Node<T>();
-		tail = new Node<T>();
-		head->next = tail;
-		head->tail = head;
-		count= 0;
-	}
-	void add(T e){
-		Node<T> *node = new Node(e, tail);
-		tail->next ->next = node;
-		tail->next = node;
-		count+=1;
-	};
-	void remove(){};
-	int size(){
-		return count;
-	};
-	void println(){
-		Node<T> *ptr = head;
-		while(ptr->next != tail){
-			cout << ptr->data << " ";	
-			ptr = ptr->next;		 
-		}
-		cout << end;
-	}
-};
-
 int main()
 {
 	Point points[100] ={Point(2.3f,12.3f), Point(2.3f,12.3f)};
@@ -247,10 +171,5 @@ int main()
 	ma.push_back(Point(1.5f, 5.2f));
 	println(ma);
 	cout << "----------------------------" << endl;
-	
-	// ma[4] = Point(1.56f, 5.22f);
-	// println(ma);
-	// cout << "----------------------------" << endl;
-
 	return 0;
 }

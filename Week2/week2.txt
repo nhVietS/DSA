@@ -1,10 +1,63 @@
+--------------------------------------------------------------------
+online #1:
 List
 - what 
 - why: list to store sequence of item
 - how
 internal memnory: RAM
-external memnory: 
+external memnory: ...
 
 array: cpp- pass to function = pass the adress of the first element
 
 practice how to use array, vector, template
+
+--------------------------------------------------------------------
+lab:
+implement some classes in 2D geometry:
+1/ Class Point to store with its coordinates x and y.
+2/ Class Vector to store a vector with its coordinates x and y.
+3/ Class Rectangle to store a rectangle with two opposite points.
+4/ Class Square as a subclass of Rectangle.
+
+you should implement all the constructor(default, user-defined copy constructors) and the destructor (if necessary)
+
+Point dist(Point &other) -> euclicean distance.
+sprt((xi-xj)^2 - (yi-yj)^2)
+dist(): -> distance from O(0, 0)
+
+static int pointCounts =0;
+static double dist(Point x, Point y);
+
+Implement function:
+1. input: quantity of points
+	output: array of points randomly
+2. input: Array of points
+	output: point nearest O_origin
+3. input: Array of vectors
+	output: longest vector
+4. input: Array of vectors
+(print)	output: ortho vectos ( vector truc giao, hay in tat ca cap vector vuong goc vs nhau)
+5. input: Array of rectangle
+(return all)	output: largest rectangle
+
+//evaluate time
+void inc(int* arr, int n){
+	//algorithm
+}
+	
+int main()
+{
+	clock_t t1 = clock();
+	inc(new int[10000], 1000);
+	clock_t t2 = clock();
+	
+	cout << ((double) t2 - t1)/ CLOCKS_PER_SEC *1000;
+}
+---------------------------------------------
+lecture 2:
+not implement avl tree in final
+know how to use vector implement DS, evaluate efficient of these data structure
+in c: array == pointer => arr[0] = *p
+List
+-Array
+-Pointer(link): single-linked list, doubly-linked list
