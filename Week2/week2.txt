@@ -38,7 +38,7 @@ Implement function:
 4. input: Array of vectors
 (print)	output: ortho vectos ( vector truc giao, hay in tat ca cap vector vuong goc vs nhau)
 5. input: Array of rectangle
-(return all)	output: largest rectangle
+(return void)	output: largest rectangle
 
 //evaluate time
 void inc(int* arr, int n){
@@ -56,7 +56,7 @@ int main()
 ---------------------------------------------
 lecture 2:
 not implement avl tree in final
-know how to use vector implement DS, evaluate efficient of these data structure
+know how to use <vector,list, stackm iomanip> library implement DS, evaluate efficient of these data structure
 in c: array == pointer => arr[0] = *p
 List
 -Array
