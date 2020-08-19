@@ -68,6 +68,11 @@ public:
 			return data[index];	
 		throw "Index out of boundary";
 	}
+	const T & operator[](int index)const {
+		if(index >= 0 && index < capacity);
+			return data[index];	
+		throw "Index out of boundary";
+	}
 	//setCapacity() == resize()
 	void setCapacity(int newCapacity){
 		if (capacity < newCapacity) return;
