@@ -35,7 +35,7 @@ public:
 	}
 	void add(T e){
 		Node<T> *node = new Node<T>(e, tail);
-		tail->next ->next = node;
+		tail->next->next = node;
 		tail->next = node;
 		count+=1;
 	};
@@ -43,17 +43,17 @@ public:
 		if(index < 0 || index > count)
 			throw ("The index is out of bound");
 		// index in [0, count]
-		Node<T>* newNode = new Node(e, 0);
-		Node<T>* pRev = head;
+		Node<T>* newNode = new Node<T>(e, 0);
+		Node<T>* prevNode = head;
 		int cursor = -1;
 		// 
 		while(cursor < index -1){
-			pRev = pRec->next;
+			prevNode = pRec->next;
 			cursor+=1;
 		}
 		// add newNode
-		Node<T>* curNode = pRev->next;
-		pRev->next = newNode;
+		Node<T>* curNode = prevNode->next;
+		prevNode->next = newNode;
 		newNode->next = curNode;
 		//missing ? change tail->next if needed (at none or full list)
 		if(index == count)
@@ -64,27 +64,34 @@ public:
 	T remove(int index){
 		if(index < 0 || index > count -1)
 			throw ("The index is out of bound");
-		Node<T>* pRev = head;
+		Node<T>* prevNode = head;
 		int cursor = -1;
 		// 
 		while(cursor < index -1){
-			pRev = pRec->next;
+			prevNode = prevNode->next;
 			cursor+=1;
 		}
-		//here: prevNode points to previous item at index -1
-		Node<T> *curNode = pRev->next;
-		pRev->next= curNode->next;
-		curNode->next =0;
+		//here: prevNode points to previous item[at index -1] 
+		Node<T> *curNode = prevNode->next;
+		prevNode->next= curNode->next;
+		curNode->next =0;//=NULL
 		if(index == count)
-			tail->next = pRev;
-		
+			tail->next = prevNode;
+		count -=1;
 		return curNode->data;
 		
 	};
 	T get(int index){
 		if(index < 0 || index > count -1)
 			throw ("The index is out of bound");
-		
+		Node<T>* prevNode = head;
+		int cursor = -1;
+		// 
+		while(cursor < index -1){
+			prevNode = prevNode->next;
+			cursor+=1;
+		}
+		return prevNode->next->data;
 	};
 	
 	bool empty(){
@@ -94,8 +101,8 @@ public:
 		return count;
 	};
 	void println(){
-		Node<T> *ptr = head;
-		while(ptr->next != tail){
+		Node<T> *ptr = head->next;
+		while(ptr != tail){
 			cout << ptr->data << " ";	
 			ptr = ptr->next;		 
 		}
@@ -104,11 +111,11 @@ public:
 };
 int main()
 {
-	Slinkedlist<int> list;
+	SLinkedlist<int> slist;
 	for(int i=0; i<=5; i++)
-		list.add(i, i*i);
+		slist.add(i, i*i);
 	
-	list.println();
+	slist.println();
 	
 	
 	return 0;

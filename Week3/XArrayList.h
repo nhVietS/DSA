@@ -26,7 +26,7 @@ private:
 			throw std::out_of_range("index is out of range");
 	}
 	void ensureCapacity(int index){
-		
+		//need implement
 	}
 private:
 	T* data;
