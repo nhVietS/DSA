@@ -1,1 +1,7 @@
+DLinkedList<Point*> dList::free(
 
+static void free(DLinkedList<T>*)
+
+DLinkedList<Point*> dList(&DLinkedList<Point*>::free);
+
+delete data on heap only;

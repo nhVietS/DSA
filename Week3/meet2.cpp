@@ -1,4 +1,11 @@
-//DSA gg-meet 18/8/2020
+#include <iostream>
+#include <iomanip>
+#include <vector>
+using namespace std;
+
+/*DSA gg-meet 18/8/2020
+ * Single linked list
+ */
 template<class T> class SLinkedlist;
 
 template<class T>
@@ -6,7 +13,7 @@ class Node{
 private:
 	T data;
 	Node<T> *next;
-	friend class SLinkedlist;
+	friend class SLinkedlist<T>;
 public:
 	Node(){
 		this->next = NULL; // NULL == 0
@@ -30,7 +37,7 @@ public:
 		head = new Node<T>();
 		tail = new Node<T>();
 		head->next = tail;
-		head->tail = head;
+		tail->next = head;
 		count= 0;
 	}
 	void add(T e){
@@ -48,7 +55,7 @@ public:
 		int cursor = -1;
 		// 
 		while(cursor < index -1){
-			prevNode = pRec->next;
+			prevNode = prevNode->next;
 			cursor+=1;
 		}
 		// add newNode
@@ -106,7 +113,7 @@ public:
 			cout << ptr->data << " ";	
 			ptr = ptr->next;		 
 		}
-		cout << end;
+		cout << endl;
 	}
 };
 int main()

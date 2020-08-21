@@ -86,7 +86,13 @@ public:
 		delete[] data;
 		data = newData;
 	};
-	// void ensureCapacity(int capacity){};
+	void ensureCapacity(int minCapacity){
+		if(minCapacity > capacity){
+			int newCapacity = (capacity*3)/2 +1;
+			if(newCapacity < minCapacity)
+				newCapacity = minCapacity;
+			setCapacity(newCapacity);
+	};
 	// void pack();
 	// void trim();
 	
@@ -98,8 +104,15 @@ public:
 		if( index <0 || index >count)//illegal
 			throw "the input out of range";
 		count-=1;
-		if(count == index){
-			
+		
+		if(capacity -1 == index){
+			data[index]=0;
+			return;
+		}
+		for(int idx= index; < count -1; idx++){
+			data[idx] = data[idx+1];
+		}
+		data[index]=0;			
 	};
 	void insertAt(int index, T e){
 		if( index <0 || index >count)//illegal
@@ -146,11 +159,11 @@ public:
 		}
 		return data[index];
 	};
-	void set(int index, const T &value){
-		if((index < 0) || (index >= count))
-			throw string("Index out of boundary");
-		data[index] = value; 
-	};
+	// void set(int index, const T &value){
+		// if((index < 0) || (index >= count))
+			// throw string("Index out of boundary");
+		// data[index] = value; 
+	//};
 	int size(){
 		return count;
 	};
