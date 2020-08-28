@@ -49,20 +49,19 @@ public:
 		tail->next = head;
 		count= 0;
 	}
-	void addTail(int e){
+	void addTail(const int& e){
 		Node *node = new Node(e, tail);
 		tail->next->next = node;
 		tail->next = node;
 		count+=1;
 	};
-	void addHead(int e){
+	void addHead(const int& e){
 		Node *firstNode = head->next;
 		Node *node = new Node(e, firstNode);
 		head->next = node;
 		count+=1;
-	};
-		
-	void add(int index, int e){
+	};		
+	void add(int index, const int& e){
 		if(index < 0 || index > count)
 			throw ("The index is out of bound \n");
 		// index in [0, count]

@@ -20,7 +20,7 @@ public:
 	~BST();
 	void add(Entry data);
 	void remove(KeyType key);
-	ValueType search(KeyType key);
+	ValueType search(KeyType key,bool& found);
 	int size();
 	int height();
 	void clear();
@@ -34,7 +34,7 @@ public:
 	DLinkedList<ValueType> lnr();
 	
 	string toString(){
-		if(this->pRoot == 0) return "(NUL)";
+		if(this->pRoot == 0) return "(NULL)";
 		else return this->pRoot->toString();
 	}
 private:
@@ -117,18 +117,27 @@ template<class KeyType, class ValueType>
 BST<KeyType, ValueType>::BST(){
 	count =0;
 	pRoot =0;
-}
+};
 
 template<class KeyType, class ValueType>
 BST<KeyType, ValueType>::~BST(){
 	remove(this->pRoot);
-}
+};
 
 template<class KeyType, class ValueType>
 void BST<KeyType, ValueType>::add(Entry data){
 	this->pRoot = add(this->pRoot, data);
 	this->count+=1;
-}
+};
+template<class KeyType, class ValueType>
+VauueType BST<KeyType, ValueType>::search(KeyType key, bool& found){
+	found=false;
+	return search(this->pRoot, key, found)
+};
+template<class KeyType, class ValueType>
+VauueType BST<KeyType, ValueType>::search(Node* pRoot, KeyType key, bool& found){
+
+};
 
 template<class KeyType, class ValueType>
 typename BST<KeyType, ValueType>::Node* BST<KeyType, ValueType>::
@@ -139,16 +148,26 @@ add(Node * pRoot, Entry data){
 	else
 		pRoot->pRight = this->add(pRoot->pRight, data);
 	return pRoot;
-}
+};
 template<class KeyType, class ValueType>
 int BST<KeyType, ValueType>::Size(){
 	return count;
-}
+};
 template<class KeyType, class ValueType>
 void BST<KeyType, ValueType>::remove(KeyType key){
 	this->pRoot = remove(this->pRoot, key);
-}
-// to use 
-/*typedef BST<int, int*>::Entry Entry;
- * BST<int, int*> tree;
- */
+};
+template<class KeyType, class ValueType>
+void BST<KeyType, ValueType>::remove(KeyType key){
+	// has left and right node
+	/*
+	V backup = pRoot->data.value;
+	find the largest on the left side, or the smallest on the right side
+	remove the node has the value found
+	retValue = backup 
+	delete something
+	return proot
+
+	*/
+};
+#endif /* BST_H */

@@ -25,4 +25,4 @@ public:
 		return list.size();
 	}
 };
-		
+#endif	

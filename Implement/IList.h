@@ -1,7 +1,7 @@
 #ifndef ILIST_H
 #define ILIST_H
 
-#include <string>;
+#include <string>
 using namespace std;
 
 template<class T>

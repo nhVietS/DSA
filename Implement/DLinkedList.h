@@ -5,7 +5,7 @@
 
 #include <sstream>
 #include <iostream>
-#inlcude <type_traits>
+#include <type_traits>
 using namespace std;
 
 template<class T>
@@ -38,8 +38,8 @@ private:
 	Node *tail;
 	int count;
 	
-	DLinkedList(void (*removeData)(DLinkedList<T>*)=0,
-	 bool (*comparator)(T, T)=0, stirng (*item2str)(T)=0);
+	DLinkedList(void (*removeData)(DLinkedList<T>*=0, (*comparator)(T, T)=0, (*item2str)(T))=0);
+	bool (*comparator)(T, T)=0, stirng (*item2str)(T)=0);
 	virtual ~DLinkedList();
 	virtual void add(T e);
 	virtual void add(int index, T e);
@@ -99,8 +99,8 @@ using List = DLinkedList<T>;
 
 //Method definition
 
-template<class T>
-DLinkedList::DLinkedList(void (*removeData)(DLinkedList<T>*), bool (*comparator)(T, T), string (*item2str)(T){
+template<class T> 
+DLinkedList<T>::DLinkedList(void (*removeData)(DLinkedList<T>*), bool (*comparator)(T, T), string (*item2str)(T)){
 	head = new Node();
 	tail = new Node();
 	head->next = tail; tail->previous=0;
@@ -111,7 +111,7 @@ DLinkedList::DLinkedList(void (*removeData)(DLinkedList<T>*), bool (*comparator)
 	this->item2str = item2str;
 };
 
-bool DLinkedList<T>::removeItem(T item, void (*removeData)(T)){
+template<class T> bool DLinkedList<T>::removeItem(T item, void (*removeData)(T)){
 	bool found = false;
 	Node *pNode = head->next;
 	
@@ -146,6 +146,7 @@ T DLinkedList<T>:: get(int index){
 		prevNode = prevNode->next;
 		cursor+=1;
 	}
+	
 	return prevNode->next->data;
 }
 
@@ -199,3 +200,4 @@ void DLinkedList<T>:: dump(){
 	cout << toString() << endl;
 	cout << line << endl;
 }
+#endif
