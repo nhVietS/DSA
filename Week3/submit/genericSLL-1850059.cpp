@@ -171,6 +171,22 @@ public:
 		}
 		cout << endl;
 	}
+	
+	T &at(int index){
+		if(index < 0 || index > count -1)
+			throw std::out_of_range("The index is out of bound");
+		*pTemp = this->pHead;
+		for(int i=0; count < i && pTemp != NULL; count++)
+		{
+			if(pTemp == a){}
+		}
+		
+			
+	};
+	T &operator[](int i){
+		
+	};
+	
 };
 
 int main()
