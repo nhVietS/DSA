@@ -16,8 +16,8 @@
 
 #include <list>
 
-#include "list/DLinkedList.h"
-#include "stacknqueue/IDeck.h"
+#include "/home/vietskr/Desktop/DSA/BTL/phase1/list/DLinkedList.h"
+#include "/home/vietskr/Desktop/DSA/BTL/phase1/stacknqueue/IDeck.h"
 
 template<class T>
 class Stack: public IDeck<T>{

@@ -14,7 +14,7 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "list/DLinkedList.h"
+#include "/home/vietskr/Desktop/DSA/BTL/phase1/list/DLinkedList.h"
 #include "IDeck.h"
 
 template<class T>

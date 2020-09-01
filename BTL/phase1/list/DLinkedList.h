@@ -391,7 +391,7 @@ int DLinkedList<T>::indexOf(T item){
      */
     Node *pNode = head->next;
     int foundAt = 0;
-
+    bool found = false;
     while(pNode != tail){
         found = DLinkedList<T>::equals(pNode->data, item, this->comparator);
         if(found) break;
@@ -425,7 +425,7 @@ bool DLinkedList<T>::removeItem(T item, void (*removeItemData)(T)){
 
     while (pNode != tail)
     {
-        found = DLinkedList<T>::removeItem(pNode->data, item, this->comparator);
+        found = DLinkedList<T>::equals(pNode->data, item, this->comparator);
         if(found){
             //detach
             pRev->next = pNode->next;
