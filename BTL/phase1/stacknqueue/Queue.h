@@ -14,7 +14,8 @@
 #ifndef QUEUE_H
 #define QUEUE_H
 
-#include "/home/vietskr/Desktop/DSA/BTL/phase1/list/DLinkedList.h"
+#include "/home/vietskr/Desktop/DSA/BTL/phase1/list/DLinkedList.h" 
+//#include "list/DLinkedList.h"
 #include "IDeck.h"
 
 template<class T>
@@ -53,7 +54,7 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        return list.remove(0);
+        return list.removeAt(0);
     }
     T peek(){
         /* YOUR CODE HERE */
@@ -105,10 +106,11 @@ public:
          */
         int index = this->list.indexOf(item);
 		if(index != -1){
-			this->list.remove(index);
+			this->list.removeAt(index);
 			return true;
 		}
 		else return false;
+        //return list.removeItem(item);
     }
     bool contains(T item){
         bool found = false;
@@ -128,6 +130,7 @@ public:
 		}
 		
         return found;
+        //return list.contains(item);
     }
     
     Iterator front(){
@@ -189,7 +192,7 @@ public:
             return iterator; 
         }
         void remove(void (*removeItem)(T)=0){
-            listIt.remove(removeItem);
+            listIt.remove(removeItem); // is it means removeAt here???
         }
     };
     //Iterator: END

@@ -282,7 +282,7 @@ T SLinkedList<T>::removeAt(int index){
     Node* curNode = prevNode->next;
     prevNode->next = curNode->next;
     curNode->next = 0;
-    if(index == count)
+    if(index == count-1)
         tail->next = prevNode;
     count -= 1;
     return curNode->data;
@@ -387,7 +387,7 @@ string SLinkedList<T>::toString(){
         
         ptr = ptr->next;
     }
-    
+    if (count == 0) return "[]";
     if(count > 0)
         if(this->item2str != 0) ss << this->item2str(ptr->data) << "]";
         else ss << ptr->data << "]";

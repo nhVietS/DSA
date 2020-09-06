@@ -18,6 +18,7 @@
 #include <sstream>
 #include <iostream>
 #include <type_traits>
+#include <cstring> // remove after
 using namespace std;
 
 template<class T>

@@ -17,7 +17,8 @@
 #include <list>
 
 #include "/home/vietskr/Desktop/DSA/BTL/phase1/list/DLinkedList.h"
-#include "/home/vietskr/Desktop/DSA/BTL/phase1/stacknqueue/IDeck.h"
+//#include "list/DLinkedList.h"
+#include "IDeck.h"
 
 template<class T>
 class Stack: public IDeck<T>{
@@ -46,7 +47,7 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        list.add(0, item); // at the begin, at the end use: list.size() -1;
+        list.add(item); // at the begin, at the end use: list.size() -1;
     }
     T pop(){
         /* YOUR CODE HERE */
@@ -56,7 +57,7 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        return list.remove(0);
+        return list.removeAt(0);
     }
     T peek(){
         /* YOUR CODE HERE */
@@ -108,7 +109,7 @@ public:
          */
         int index = this->list.indexOf(item);
 		if(index != -1){
-			this->list.remove(index);
+			this->list.removeAt(index);
 			return true;
 		}
 		else return false;

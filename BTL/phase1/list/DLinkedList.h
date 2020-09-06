@@ -16,7 +16,6 @@
 #include <type_traits>
 using namespace std;
 
-
 template<class T>
 class DLinkedList: IList<T> {
 public:
@@ -367,7 +366,7 @@ T DLinkedList<T>::get(int index){
      */
     
     //remove the following lines
-    Node* pRev = head->next;
+    Node* pRev = head;
     int cursor = -1;
     while(cursor < index -1){
         pRev = pRev->next;
@@ -459,6 +458,8 @@ bool DLinkedList<T>::contains(T item){
 template<class T>
 string DLinkedList<T>::toString(){
     stringstream ss;
+    if (count == 0) return "[]"; //add after post in bkel
+
     ss << "[";
     Node* ptr = head->next;
     while(ptr != tail->prev){
@@ -492,4 +493,3 @@ void DLinkedList<T>::dump(){
 
 
 #endif /* DLINKEDLIST_H */
-

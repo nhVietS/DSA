@@ -167,7 +167,38 @@ void BST<KeyType, ValueType>::remove(KeyType key){
 	retValue = backup 
 	delete something
 	return proot
-
+	
 	*/
+	string str;
+	remove(root,key,str); return str;
+	//##########
+	if(root->data->key > key)
+		root->left = remove(root->left,key)
+	else if(root->right->key < key)
+		root->right = remove(root->right,key)
+	else {
+		str = root->data->value;
+		if(root->right ==0 && root->left ==0){}
+			delete root;
+			return NULL;
+		}
+		else if(root->right ==0 && root->left !=0){
+			Node* pTemp = root->left;
+			delete root; return pTemp;
+		}
+		else if(root->right !=0 && root->left ==0){
+			Node* pTemp = root->right;
+			delete root; return pTemp;
+		}
+		else {
+			Node* newR = root->right;
+			while(root->left != 0){
+				newR = newR->left;
+			}
+			root->data->value = newR->data->value;
+			root->data->key = newR->data->key;
+			return root->right = remove(root->right, newR->data->key)
+		}		
+	}
 };
 #endif /* BST_H */
