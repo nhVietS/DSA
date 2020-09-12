@@ -12,9 +12,24 @@
 #include <type_traits>
 #include <iomanip>
 #include <string>
-
+#include <vector>
+#include <algorithm>
 using namespace std;
 
+int getIndex(vector<int> v, int K)
+{
+    vector<int>::iterator it = find(v.begin(), v.end(), K);
+    if (it != v.end())
+    {
+        int index = distance(v.begin(), it);
+        cout << index << endl;
+        return index;
+    }
+    else
+    {
+        return -1;
+    }
+}
 void listDemo(){
     cout << "somethings from here" << endl;
     int item[]={19, 34, 22, 4, 8, 32, 78, 89};
@@ -84,8 +99,8 @@ void queueInOut(){
         else queue.push(cur);
     }
     string output = os.str();
-    cout << "Sequence from stack: " << output << endl;
-    cout << "Current stack (from top): [";
+    cout << "Sequence from queue: " << output << endl;
+    cout << "Current queue (from top): [";
     while (!queue.empty()) cout << queue.pop();
     cout << "]" << endl;
 }
@@ -146,6 +161,7 @@ void checkBalanced(){
         else cout << "Delimiters are imbalacened";
 }
 void toBinary(int dec){
+    cout << endl;
     Stack<char> stack;
     int count =0;
     while (dec > 0)
@@ -169,8 +185,6 @@ void printReverseStr(){
     stringstream os;
     for(int i=0; i < input.length(); i++) stack.push(input[i]);
     int i=0;
-    cout << stack.peek() << endl;
-    cout << stack.pop() << endl;
     while (!stack.empty())
     {
         input[i] = stack.peek();
@@ -178,9 +192,9 @@ void printReverseStr(){
         char top = stack.pop();
         os << top;
     }
-    string output = os.str();
-    cout << "Compare in n out: " << input.compare(output) << endl;
-    cout << "Sequence from stack: " << output << endl;
-    cout << "Reverse Sequence input: " << input << endl;
+    
+    cout << "Compare in n out: " << input.compare(os.str()) << endl;
+    cout << "Sequence from stack: " << os.str() << endl;
+    cout << "Sequence from input: " << input << endl;
 }
 #endif

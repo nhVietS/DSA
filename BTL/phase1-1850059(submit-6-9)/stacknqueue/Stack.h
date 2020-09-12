@@ -16,8 +16,8 @@
 
 #include <list>
 
-//#include "/home/vietskr/Desktop/DSA/BTL/phase1/list/DLinkedList.h"
-#include "list/DLinkedList.h"
+#include "/home/vietskr/Desktop/DSA/BTL/phase1-1850059(submit-6-9)/stacknqueue/Queue.h"
+//#include "list/DLinkedList.h"
 #include "IDeck.h"
 
 template<class T>
@@ -47,7 +47,7 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        list.add(0, item); // at the begin, at the end use: list.size() -1;
+        list.add(0,item); // at the begin, at the end use: list.size() -1;
     }
     T pop(){
         /* YOUR CODE HERE */
@@ -97,7 +97,7 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        return list.clear();
+        list.clear();
     }
     bool remove(T item){
         /* YOUR CODE HERE */
@@ -107,12 +107,6 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        // int index = this->list.indexOf(item);
-		// if(index != -1){
-		// 	this->list.removeAt(index);
-		// 	return true;
-		// }
-		// else return false;
         return list.removeItem(item);
     }
     bool contains(T item){
@@ -125,14 +119,8 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        // typename DLinkedList<T>::Iterator it = list.begin();
-		// while(it != list.end()){
-		// 	found = equals(*it, item, this->comparator);
-		// 	if(found) break;
-		// 	it++;
-		// }
-        // return found;
-        return list.contains(item);
+        found = list.contains(item);
+        return found;
     }
     Iterator top(){
         return Iterator(this, true);

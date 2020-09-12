@@ -4,7 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/home/vietskr/Desktop/DSA/BTL/phase1/"
+                "/home/vietskr/Desktop/DSA/BTL/phase1-1850059(submit-6-9)/"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
