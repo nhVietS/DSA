@@ -28,7 +28,7 @@
 
 
 template<class K, class V>
-class BST /*: public IBST<K,V>, public ITreeWalker<V>*/{
+class BST : public IBST<K,V>, public ITreeWalker<V>{
 public:
     class Node; //forward declaration  
     class Entry; //forward declaration  
@@ -210,7 +210,37 @@ template<class K, class V>
 typename BST<K, V>::Node*  BST<K, V>::
 remove(Node* pRoot, K key, V& retValue){
     // YOUR CODE HERE 
-    return this->pRoot;
+    if(pRoot == 0) return this->pRoot;
+    if(pRoot->data.key > key)
+        pRoot->pLeft = remove(pRoot->pLeft, key, retValue);
+    else if (pRoot->data.key < key)
+        pRoot->pRight = remove(pRoot->pRight, key, retValue);
+    else{
+        retValue = pRoot->data.value;
+        count -= 1;
+        if(pRoot->pLeft == 0){
+            Node *pTemp = pRoot->pRight;
+            delete pRoot;
+            return pTemp;
+        }
+        else if(pRoot->pRight == 0){
+            Node *pTemp = pRoot->pLeft;
+            delete pRoot;
+            return pTemp;
+        }
+        else {
+            // find the smallest in the right sub tree
+            Node *pTemp = pRoot->pRight;
+            while (pTemp && pTemp->pLeft != NULL)
+                pTemp = pTemp->pLeft;
+            // copy data to root
+            pRoot->data.key = pTemp->data.key;
+            pRoot->data.value = pTemp->data.value;
+            //delete
+            pRoot->pRight = remove(pRoot->pRight, pTemp->data.key, retValue);
+        }
+    }
+    return pRoot;
     // END: YOUR CODE HERE
 }
 
@@ -273,38 +303,100 @@ int BST<K, V>::height(Node* pRoot){
 }
 template<class K, class V>
 void BST<K, V>::clear(){
-    // YOUR CODE HERE 
+    // YOUR CODE HERE
+    if(pRoot == 0) return;
+    Queue<Node*> queue;
+    queue.push(pRoot);
 
+    Node* pNode;
+    while (!queue.empty())
+    {
+        pNode = queue.peek();
+        queue.pop();
+        if(pNode->pLeft)
+            queue.push(pNode->pLeft);
+        if(pNode->pRight)
+            queue.push(pNode->pRight);
+        delete pNode;
+        count -= 1;
+    }
+    pRoot = 0;
+    
     // END: YOUR CODE HERE
 }
 
 template<class K, class V>
 DLinkedList<V> BST<K, V>::ascendingList(){
     // YOUR CODE HERE 
+    // use lnr (in order)
     DLinkedList<V> list;
+    ascendingList(pRoot,list);
     return list;
     // END: YOUR CODE HERE
 }
 
 template<class K, class V>
 void BST<K, V>::ascendingList(Node* pRoot, DLinkedList<V>& list){
-    // YOUR CODE HERE 
+    // YOUR CODE HERE
+    if (pRoot == 0) return;
+    ascendingList(pRoot->pLeft, list);
+    list.add(*&(pRoot->data.value));
+    ascendingList(pRoot->pRight, list);
+    // use insertion sort
+    // if(pRoot== 0) return;
+    // Node *pNode;
+    // while (pRoot != 0) pNode = pRoot->pLeft;
+    // Node *newNode = new Node(pRoot->data, 0, 0);
+    // Node *temp = pNode;
+    // Node *pPrev = NULL;
+    // if(temp == 0) pNode = newNode;
+    // else
+    // {
+    //     while (temp != 0)
+    //     {
+    //         if(temp->data.value > pRoot->data.value) break;
+    //         else{
+    //             pPrev = temp;
+    //             temp = temp->next;
+    //         }
+    //     }
+    //     if (temp == 0) pPrev->next = newNode;
+    //     else
+    //     {
+    //         if(pPrev == 0){
+    //             newNode->next = temp;
+    //             pNode = newNode;
+    //         }
+    //         else{
+    //             newNode->next = temp;
+    //             pPrev->next = newNode;
+    //         }
+    //     }
+    // }
 
+    
+    // list.add()
     // END: YOUR CODE HERE
 }
 
 template<class K, class V>
 DLinkedList<V> BST<K, V>::descendingList(){
-    // YOUR CODE HERE 
+    // YOUR CODE HERE
+    // use lrn (post order)
     DLinkedList<V> list;
+    descendingList(pRoot, list);
     return list;
     // END: YOUR CODE HERE
 }
 
 template<class K, class V>
 void BST<K, V>::descendingList(Node* pRoot, DLinkedList<V>& list){
-    // YOUR CODE HERE 
-
+    // YOUR CODE HERE
+    if (pRoot == 0) return;
+    // cout << *&(pRoot->data.value) << endl;
+    descendingList(pRoot->pLeft, list);
+    descendingList(pRoot->pRight, list);
+    list.add(*&(pRoot->data.value));
     // END: YOUR CODE HERE
 }
 

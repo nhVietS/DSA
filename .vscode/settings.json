@@ -29,6 +29,12 @@
         "any": "cpp",
         "optional": "cpp",
         "random": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "execution": "cpp",
+        "filesystem": "cpp",
+        "regex": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "xtree": "cpp"
     }
 }
