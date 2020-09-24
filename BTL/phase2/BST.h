@@ -16,16 +16,15 @@
 #include <string>
 #include <sstream>
 
-#include "./../phase2/IBST.h"
-#include "./../phase2/Stack.h"
-#include "./../phase2/Queue.h"
-#include "./../phase2/ITreeWalker.h"
+// #include "./../phase2/IBST.h"
+// #include "./../phase2/Stack.h"
+// #include "./../phase2/Queue.h"
+// #include "./../phase2/ITreeWalker.h"
 
-// #include "tree/IBST.h"
-// #include "tree/ITreeWalker.h"
-// #include "stacknqueue/Stack.h"
-// #include "stacknqueue/Queue.h"
-
+#include "tree/IBST.h"
+#include "tree/ITreeWalker.h"
+#include "stacknqueue/Stack.h"
+#include "stacknqueue/Queue.h"
 
 template<class K, class V>
 class BST : public IBST<K,V>, public ITreeWalker<V>{
@@ -201,6 +200,7 @@ V BST<K, V>::remove(K key){
     // YOUR CODE HERE 
     V retValue;
     this->pRoot = remove(this->pRoot, key, retValue);
+    count-=1;
     return retValue;
     // END: YOUR CODE HERE
 }
@@ -229,11 +229,11 @@ remove(Node* pRoot, K key, V& retValue){
             return pTemp;
         }
         else {
-            // find the smallest in the right sub tree
+            /* find the smallest in the right sub tree */
             Node *pTemp = pRoot->pRight;
             while (pTemp && pTemp->pLeft != NULL)
                 pTemp = pTemp->pLeft;
-            // copy data to root
+            /* copy data to root */
             pRoot->data.key = pTemp->data.key;
             pRoot->data.value = pTemp->data.value;
             //delete
@@ -261,7 +261,7 @@ V BST<K, V>::search(Node* pRoot, K key, bool& found){
     }       
     if (pRoot->data.key == key){
         found = true;
-        return pRoot->data.value; //???? => return;
+        return pRoot->data.value; 
     }
     // Key is greater than root's key 
     if (pRoot->data.key < key) 
@@ -269,9 +269,6 @@ V BST<K, V>::search(Node* pRoot, K key, bool& found){
   
     // Key is smaller than root's key 
     return search(pRoot->pLeft, key, found);
-
-    //return NULL if not found
-
     // END: YOUR CODE HERE
 }
 
@@ -340,42 +337,9 @@ void BST<K, V>::ascendingList(Node* pRoot, DLinkedList<V>& list){
     // YOUR CODE HERE
     if (pRoot == 0) return;
     ascendingList(pRoot->pLeft, list);
-    list.add(*&(pRoot->data.value));
+    list.add(pRoot->data.value);
     ascendingList(pRoot->pRight, list);
-    // use insertion sort
-    // if(pRoot== 0) return;
-    // Node *pNode;
-    // while (pRoot != 0) pNode = pRoot->pLeft;
-    // Node *newNode = new Node(pRoot->data, 0, 0);
-    // Node *temp = pNode;
-    // Node *pPrev = NULL;
-    // if(temp == 0) pNode = newNode;
-    // else
-    // {
-    //     while (temp != 0)
-    //     {
-    //         if(temp->data.value > pRoot->data.value) break;
-    //         else{
-    //             pPrev = temp;
-    //             temp = temp->next;
-    //         }
-    //     }
-    //     if (temp == 0) pPrev->next = newNode;
-    //     else
-    //     {
-    //         if(pPrev == 0){
-    //             newNode->next = temp;
-    //             pNode = newNode;
-    //         }
-    //         else{
-    //             newNode->next = temp;
-    //             pPrev->next = newNode;
-    //         }
-    //     }
-    // }
-
     
-    // list.add()
     // END: YOUR CODE HERE
 }
 
@@ -396,7 +360,7 @@ void BST<K, V>::descendingList(Node* pRoot, DLinkedList<V>& list){
     // cout << *&(pRoot->data.value) << endl;
     descendingList(pRoot->pLeft, list);
     descendingList(pRoot->pRight, list);
-    list.add(*&(pRoot->data.value));
+    list.add(pRoot->data.value);    
     // END: YOUR CODE HERE
 }
 

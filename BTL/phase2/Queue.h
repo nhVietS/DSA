@@ -118,7 +118,8 @@ public:
          * Guidelines:
          * Use your own methods implemented in other list
          */
-        return list.contains(item);
+         found = list.contains(item);
+        return found;
     }
     
     Iterator front(){
